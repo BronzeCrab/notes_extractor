@@ -2,33 +2,48 @@
 
 Note Extractor is a Python tool for extracting notes from audio files (MP3/WAV) and generating guitar tabs.
 
-## Features
+## Installation
 
-- Extract notes from audio using librosa pitch detection
-- Generate ASCII guitar tabs
-- Generate PDF guitar tabs with professional formatting
-- Support for multiple guitar tunings (Standard, Drop D, Drop C)
-- Configurable tempo and notes per line for PDF output
+### Using Pixi (recommended):
 
-## How to run it:
+```bash
+# Install pixi
+curl -fsSL https://pixi.sh/install.sh | bash
 
-### Install dependencies:
+# Clone and install
+git clone https://github.com/BronzeCrab/notes_extractor.git
+cd notes_extractor
+pixi install
+```
+
+### Using pip:
 
 ```bash
 pip install -r requirements.txt
 ```
 
+## Usage
+
 ### Basic usage:
 
 ```bash
-# Extract notes and generate ASCII tab
+# Using pixi
+pixi run python note_extractor_tabs_gen.py song.mp3 --output tab.txt
+
+# Or using pip
 python note_extractor_tabs_gen.py song.mp3 --output tab.txt
+```
 
-# Generate PDF tab
-python note_extractor_tabs_gen.py song.mp3 --pdf tab.pdf
+### Generate PDF:
 
-# Full options
-python note_extractor_tabs_gen.py song.mp3 \
+```bash
+pixi run python note_extractor_tabs_gen.py song.mp3 --pdf tab.pdf
+```
+
+### Full options:
+
+```bash
+pixi run python note_extractor_tabs_gen.py song.mp3 \
     --output tab.txt \
     --pdf tab.pdf \
     --title "My Song Tab" \
@@ -46,6 +61,35 @@ python note_extractor_tabs_gen.py song.mp3 \
 - `--tempo`: Tempo in BPM (optional)
 - `--tuning`: Guitar tuning (standard, drop_d, drop_c)
 - `--notes-per-line`: Number of notes per line in PDF (default: 20)
+
+## Development
+
+### Run tests:
+
+```bash
+pixi run test
+```
+
+### Lint:
+
+```bash
+pixi run lint
+```
+
+### Format:
+
+```bash
+pixi run format
+```
+
+## FFT Dependencies
+
+- **librosa**: Primary audio analysis library (uses scipy.signal.stft, numpy.fft)
+- **numpy**: Fast Fourier Transform (numpy.fft)
+- **scipy**: Signal processing (scipy.signal)
+- **reportlab**: PDF generation
+
+These libraries work on Windows, macOS, and Linux.
 
 ## References:
 
