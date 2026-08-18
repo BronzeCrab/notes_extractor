@@ -1,0 +1,48 @@
+[project]
+name = "note-extractor"
+version = "0.1.0"
+description = "Extract notes from audio and generate guitar tabs"
+requires-python = ">=3.10"
+authors = ["BronzeCrab"]
+
+dependencies = [
+    "librosa>=0.10.0",
+    "numpy>=1.24.0",
+    "scipy>=1.11.0",
+    "reportlab>=4.0.0",
+]
+
+[dependencies]
+
+[feature.dev.dependencies]
+pytest = ">=7.0.0"
+pytest-cov = ">=4.0.0"
+ruff = ">=0.1.0"
+
+[environments]
+default = { features = [], solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+
+[target.win-64.dependencies]
+# Windows-specific dependencies if needed
+
+[target.linux-64.dependencies]
+# Linux-specific dependencies if needed
+
+[target.osx-64.dependencies]
+# macOS Intel-specific dependencies if needed
+
+[target.osx-arm64.dependencies]
+# macOS ARM-specific dependencies if needed
+
+[tasks]
+# Main task
+extract = "python note_extractor_tabs_gen.py"
+test = "pytest"
+lint = "ruff check ."
+format = "ruff format ."
+
+[[package]]
+name = "note-extractor"
+version = "0.1.0"
+source = { editable = "." }
